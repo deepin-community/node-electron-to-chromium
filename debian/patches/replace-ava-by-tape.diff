@@ -1,0 +1,70 @@
+Description: replace ava by tape
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-10-12
+
+--- a/test.js
++++ b/test.js
+@@ -1,4 +1,4 @@
+-const test = require('ava');
++const test = require('tape');
+ const e2c = require("./index.js");
+ 
+ // test functions
+@@ -8,6 +8,7 @@
+   t.is(e2c.electronToChromium("1.6"), "56");
+   t.is(e2c.electronToChromium("1.5.1"), "54.0.2840.101");
+   t.is(e2c.electronToChromium("9000"), undefined);
++  t.end();
+ });
+ test('test chromiumToElectron', t => {
+   t.is(e2c.chromiumToElectron(1), undefined);
+@@ -15,38 +16,48 @@
+   t.is(e2c.chromiumToElectron("56"), "1.6");
+   t.deepEqual(e2c.chromiumToElectron("54.0.2840.51"), ["1.4.12"]);
+   t.is(e2c.chromiumToElectron("9000"), undefined);
++  t.end();
+ });
+ test('test electronToBrowserList', t => {
+   t.is(e2c.electronToBrowserList("1.6"), "Chrome >= 56");
+   t.is(e2c.electronToBrowserList(9999), undefined);
++  t.end();
+ });
+ 
+ 
+ // test lists
+ test('test versions', t => {
+   t.is(e2c.versions["1.6"], "56");
++  t.end();
+ });
+ test('test fullVersions', t => {
+   t.is(e2c.fullVersions["1.5.1"], "54.0.2840.101");
++  t.end();
+ });
+ test('test chromiumVersions', t => {
+   t.is(e2c.chromiumVersions["56"], "1.6");
++  t.end();
+ });
+ test('test fullChromiumVersions', t => {
+   t.deepEqual(e2c.fullChromiumVersions["54.0.2840.51"], ["1.4.12"]);
++  t.end();
+ });
+ 
+ 
+ // test individial includes
+ test('test versions.js', t => {
+   t.is(require("./versions")["1.6"], "56");
++  t.end();
+ });
+ test('test full-versions.js', t => {
+   t.is(require("./full-versions")["1.5.1"], "54.0.2840.101");
++  t.end();
+ });
+ test('test chromium-versions.js', t => {
+   t.is(require("./chromium-versions")["56"], "1.6");
++  t.end();
+ });
+ test('test full-chromium-versions.js', t => {
+   t.deepEqual(require("./full-chromium-versions")["54.0.2840.51"], ["1.4.12"]);
++  t.end();
+ });

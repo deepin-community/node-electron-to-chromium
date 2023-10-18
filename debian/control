@@ -5,9 +5,9 @@ Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.deb
 Uploaders: Pirate Praveen <praveen@debian.org>
 Testsuite: autopkgtest-pkg-nodejs
 Build-Depends: debhelper-compat (= 13)
- , node-tape <!nocheck>
  , dh-sequence-nodejs
-Standards-Version: 4.6.0
+ , ava <!nocheck>
+Standards-Version: 4.6.2
 Homepage: https://www.npmjs.com/package/electron-to-chromium
 Vcs-Git: https://salsa.debian.org/js-team/node-electron-to-chromium.git
 Vcs-Browser: https://salsa.debian.org/js-team/node-electron-to-chromium
